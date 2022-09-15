@@ -20,7 +20,5 @@ namespace ZooController
                 _memoryLionDao.Update(animal);
             }
         }
-
-
     }
 }
