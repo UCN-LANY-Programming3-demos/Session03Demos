@@ -19,6 +19,7 @@ namespace ZooController
 
         public void FeedAnimals()
         {
+            // Feeding animals based on interface type
             foreach (var animal in _animals)
             {
                 if (animal is ICarnivore)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooModel
 {
-    public class Lion : Animal, ICarnivore
+    public class Lion : Animal, ICarnivore // The lion is a carnivore
     {
         public Lion(string name) : base(350, name)
         {

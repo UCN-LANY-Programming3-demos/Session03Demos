@@ -9,8 +9,7 @@ namespace ZooControllerTests
         {
             // Arrange
             KeeperController keeperController = new KeeperController();
-            int beforeWeight = keeperController.Animals.Sum(x => x.Weight);
-            int afterWeight = beforeWeight + keeperController.Animals.Count();
+            int afterWeight = keeperController.Animals.Sum(x => x.Weight) + keeperController.Animals.Count();
 
             // Act
             keeperController.FeedAnimals();
