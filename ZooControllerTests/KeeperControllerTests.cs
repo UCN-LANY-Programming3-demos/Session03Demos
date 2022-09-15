@@ -13,7 +13,7 @@ namespace ZooControllerTests
             MemoryAnimalDao<Lion> _memoryAnimalDao = new MemoryAnimalDao<Lion>();
             _memoryAnimalDao.Create(new Lion("Alex"));
 
-            KeeperController keeperController = new KeeperController(_memoryAnimalDao);
+            KeeperController keeperController = new KeeperController();
             int afterWeight = _memoryAnimalDao.Animals.Sum(a => a.Weight) + 1;
 
             //// Act

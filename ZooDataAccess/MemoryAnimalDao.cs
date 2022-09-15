@@ -4,6 +4,11 @@ namespace ZooDataAccess
 {
     public class MemoryAnimalDao<TAnimal> where TAnimal : Animal
     {
+        public static MemoryAnimalDao<TAnimal> Create()
+        {
+            return new MemoryAnimalDao<TAnimal>();
+        }
+
         public List<TAnimal> Animals { get; }
 
         public MemoryAnimalDao()

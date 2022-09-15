@@ -7,12 +7,12 @@ namespace ZooController
     {
         private MemoryAnimalDao<Lion> _memoryLionDao;
      
-        public KeeperController(MemoryAnimalDao<Lion> memoryAnimalDao)
+        public KeeperController()
         {
-            _memoryLionDao = memoryAnimalDao;
+            _memoryLionDao = MemoryAnimalDao<Lion>.Create();
         }
 
-        public void FeedAnimals()
+        public void FeedAnimals(int weight = 0)
         {
             foreach (var animal in _memoryLionDao.GetAll())
             {
@@ -20,5 +20,7 @@ namespace ZooController
                 _memoryLionDao.Update(animal);
             }
         }
+
+
     }
 }
