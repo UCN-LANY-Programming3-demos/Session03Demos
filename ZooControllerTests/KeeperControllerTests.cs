@@ -1,4 +1,6 @@
 using ZooController;
+using ZooDataAccess;
+using ZooModel;
 
 namespace ZooControllerTests
 {
@@ -8,14 +10,17 @@ namespace ZooControllerTests
         public void TestFeedAnimalsSuccess()
         {
             // Arrange
-            KeeperController keeperController = new KeeperController();
-            int afterWeight = keeperController.Animals.Sum(x => x.Weight) + keeperController.Animals.Count();
+            MemoryAnimalDao<Lion> _memoryAnimalDao = new MemoryAnimalDao<Lion>();
+            _memoryAnimalDao.Create(new Lion("Alex"));
 
-            // Act
+            KeeperController keeperController = new KeeperController(_memoryAnimalDao);
+            int afterWeight = _memoryAnimalDao.Animals.Sum(a => a.Weight) + 1;
+
+            //// Act
             keeperController.FeedAnimals();
 
-            // Assert
-            Assert.True(afterWeight == keeperController.Animals.Sum(x => x.Weight));
+            //// Assert
+            Assert.True(afterWeight == _memoryAnimalDao.Animals.Sum(a => a.Weight));
         }
     }
 }

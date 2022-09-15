@@ -1,35 +1,23 @@
-﻿using ZooModel;
+﻿using ZooDataAccess;
+using ZooModel;
 
 namespace ZooController
 {
     public class KeeperController
     {
-        private List<Animal> _animals = new();
-
-        public List<Animal> Animals { get { return _animals; } }
-
-        public KeeperController()
+        private MemoryAnimalDao<Lion> _memoryLionDao;
+     
+        public KeeperController(MemoryAnimalDao<Lion> memoryAnimalDao)
         {
-            Zebra marty = new Zebra("Marty");
-            Lion alex = new Lion("Alex");
-
-            _animals.Add(alex);
-            _animals.Add(marty);
+            _memoryLionDao = memoryAnimalDao;
         }
 
         public void FeedAnimals()
         {
-            // Feeding animals based on interface type
-            foreach (var animal in _animals)
+            foreach (var animal in _memoryLionDao.GetAll())
             {
-                if (animal is ICarnivore)
-                {
-                    ((ICarnivore)animal).EatMeat();
-                }
-                if (animal is IHerbavore)
-                {
-                    ((IHerbavore)animal).EatGrass();
-                }
+                animal.EatMeat();
+                _memoryLionDao.Update(animal);
             }
         }
     }
